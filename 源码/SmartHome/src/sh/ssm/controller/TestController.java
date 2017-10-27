@@ -1,13 +1,19 @@
 package sh.ssm.controller;
 
+import java.lang.reflect.Array;
+import java.util.Arrays;
+
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
-import sh.ssm.po.User;
-import sh.ssm.service.UserService;
+
+import sh.ssm.tcp.SocketOperate;
+
 
 
 
@@ -15,15 +21,14 @@ import sh.ssm.service.UserService;
 @Controller
 public class TestController
 {
-   @Autowired
-   private UserService userService;
-   @RequestMapping("/test")
-   public String test(HttpServletRequest request) throws Exception
+  
+   @RequestMapping("/login")
+   public void fule(HttpServletRequest request, @RequestParam("param1") String param1,
+           @RequestParam("param2")String param2) throws Exception
    {
-	   String nameString=request.getParameter("name");
-	   System.out.println(nameString);
-	   
-	   return "index";
+	  System.out.println(param1+param2); 
+	  
+	   //return "login";
    }
    
 }

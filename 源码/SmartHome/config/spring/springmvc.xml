@@ -17,7 +17,7 @@
   http://www.springframework.org/schema/mvc/spring-mvc.xsd
   http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd" >
 	<!--扫描controller，指定controller的包 -->
-	<context:component-scan base-package="sh.ssm.controller"></context:component-scan>
+	<context:component-scan   base-package="sh.ssm"></context:component-scan>
 		
 	<!--注解映射器 -->
 	<!-- <bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping"/> -->
@@ -34,4 +34,7 @@
 		<property name="suffix" value=".jsp"/>
 	</bean>
 	
+   
+   
+   
 </beans>
