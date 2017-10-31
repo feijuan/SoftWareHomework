@@ -12,6 +12,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 
+
+
+import sh.ssm.po.ShAdmin;
+import sh.ssm.service.ShAdminService;
 import sh.ssm.tcp.SocketOperate;
 
 
@@ -21,14 +25,19 @@ import sh.ssm.tcp.SocketOperate;
 @Controller
 public class TestController
 {
-  
+   @Autowired
+   private ShAdminService shAdminService;
    @RequestMapping("/login")
-   public void fule(HttpServletRequest request, @RequestParam("param1") String param1,
-           @RequestParam("param2")String param2) throws Exception
+   public String fule(HttpServletRequest request) throws Exception
    {
-	  System.out.println(param1+param2); 
-	  
-	   //return "login";
+	 String name=request.getParameter("name");
+	 System.out.println(name);
+	 ShAdmin shAdmin=new ShAdmin();
+	 shAdmin.setAdminName("wwww");
+	 shAdmin.setPassword("wwww");
+	 shAdmin.setTelephone("13465816558");
+	 shAdminService.insert(shAdmin);
+	 return "login";
    }
    
 }

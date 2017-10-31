@@ -22,7 +22,7 @@
     delete from home_member
     where idcard_num = #{idcardNum,jdbcType=VARCHAR}
   </delete>
-  <insert id="insert" parameterType="sh.ssm.po.HomeMember" >
+  <insert id="insert"   parameterType="sh.ssm.po.HomeMember" >
     insert into home_member (idcard_num, home_id, username, 
       password, telephone, owner_flag
       )
