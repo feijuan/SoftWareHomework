@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="sh.ssm.dao.HomeRoomMapper" >
+  <resultMap id="BaseResultMap" type="sh.ssm.po.HomeRoom" >
+    <id column="room_id" property="roomId" jdbcType="INTEGER" />
+    <result column="home_id" property="homeId" jdbcType="VARCHAR" />
+    <result column="root_name" property="rootName" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    room_id, home_id, root_name
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from home_room
+    where room_id = #{roomId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from home_room
+    where room_id = #{roomId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="sh.ssm.po.HomeRoom" >
+    insert into home_room (room_id, home_id, root_name
+      )
+    values (#{roomId,jdbcType=INTEGER}, #{homeId,jdbcType=VARCHAR}, #{rootName,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="sh.ssm.po.HomeRoom" >
+    insert into home_room
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="roomId != null" >
+        room_id,
+      </if>
+      <if test="homeId != null" >
+        home_id,
+      </if>
+      <if test="rootName != null" >
+        root_name,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="roomId != null" >
+        #{roomId,jdbcType=INTEGER},
+      </if>
+      <if test="homeId != null" >
+        #{homeId,jdbcType=VARCHAR},
+      </if>
+      <if test="rootName != null" >
+        #{rootName,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="sh.ssm.po.HomeRoom" >
+    update home_room
+    <set >
+      <if test="homeId != null" >
+        home_id = #{homeId,jdbcType=VARCHAR},
+      </if>
+      <if test="rootName != null" >
+        root_name = #{rootName,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where room_id = #{roomId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="sh.ssm.po.HomeRoom" >
+    update home_room
+    set home_id = #{homeId,jdbcType=VARCHAR},
+      root_name = #{rootName,jdbcType=VARCHAR}
+    where room_id = #{roomId,jdbcType=INTEGER}
+  </update>
+</mapper>
