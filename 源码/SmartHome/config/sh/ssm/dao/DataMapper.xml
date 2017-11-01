@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="sh.ssm.dao.DataMapper" >
+  <resultMap id="BaseResultMap" type="sh.ssm.po.Data" >
+    <result column="collect_time" property="collectTime" jdbcType="VARCHAR" />
+    <result column="data" property="data" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    data_id, sensor_id, collect_time, data, data_type
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="Map" >
+    select 
+    collect_time,data
+    from data
+    where sensor_id = #{sensorId,jdbcType=INTEGER} and data_type=#{type,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from data
+    where data_id = #{dataId,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteBySensorID" parameterType="java.lang.Integer">
+  delete from data
+  where sensor_id=#{sensorId,jdbcType=INTEGER}</delete>
+  <insert id="insert" parameterType="sh.ssm.po.Data" >
+    insert into data (data_id, sensor_id, collect_time, 
+      data, data_type)
+    values (#{dataId,jdbcType=INTEGER}, #{sensorId,jdbcType=INTEGER}, #{collectTime,jdbcType=VARCHAR}, 
+      #{data,jdbcType=VARCHAR}, #{dataType,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="sh.ssm.po.Data" >
+    insert into data
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="dataId != null" >
+        data_id,
+      </if>
+      <if test="sensorId != null" >
+        sensor_id,
+      </if>
+      <if test="collectTime != null" >
+        collect_time,
+      </if>
+      <if test="data != null" >
+        data,
+      </if>
+      <if test="dataType != null" >
+        data_type,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="dataId != null" >
+        #{dataId,jdbcType=INTEGER},
+      </if>
+      <if test="sensorId != null" >
+        #{sensorId,jdbcType=INTEGER},
+      </if>
+      <if test="collectTime != null" >
+        #{collectTime,jdbcType=VARCHAR},
+      </if>
+      <if test="data != null" >
+        #{data,jdbcType=VARCHAR},
+      </if>
+      <if test="dataType != null" >
+        #{dataType,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="sh.ssm.po.Data" >
+    update data
+    <set >
+      <if test="sensorId != null" >
+        sensor_id = #{sensorId,jdbcType=INTEGER},
+      </if>
+      <if test="collectTime != null" >
+        collect_time = #{collectTime,jdbcType=VARCHAR},
+      </if>
+      <if test="data != null" >
+        data = #{data,jdbcType=VARCHAR},
+      </if>
+      <if test="dataType != null" >
+        data_type = #{dataType,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where data_id = #{dataId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="sh.ssm.po.Data" >
+    update data
+    set sensor_id = #{sensorId,jdbcType=INTEGER},
+      collect_time = #{collectTime,jdbcType=VARCHAR},
+      data = #{data,jdbcType=VARCHAR},
+      data_type = #{dataType,jdbcType=VARCHAR}
+    where data_id = #{dataId,jdbcType=INTEGER}
+  </update>
+</mapper>

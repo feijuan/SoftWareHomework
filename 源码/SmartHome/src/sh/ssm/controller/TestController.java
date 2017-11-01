@@ -14,8 +14,12 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 
 
+
+
+import sh.ssm.po.Home;
 import sh.ssm.po.ShAdmin;
 import sh.ssm.service.ShAdminService;
+import sh.ssm.service.ShHomeService;
 import sh.ssm.tcp.SocketOperate;
 
 
@@ -26,17 +30,14 @@ import sh.ssm.tcp.SocketOperate;
 public class TestController
 {
    @Autowired
-   private ShAdminService shAdminService;
+   private ShHomeService shHomeService;
    @RequestMapping("/login")
    public String fule(HttpServletRequest request) throws Exception
    {
-	 String name=request.getParameter("name");
-	 System.out.println(name);
-	 ShAdmin shAdmin=new ShAdmin();
-	 shAdmin.setAdminName("wwww");
-	 shAdmin.setPassword("wwww");
-	 shAdmin.setTelephone("13465816558");
-	 shAdminService.insert(shAdmin);
+	   Home home=new Home();
+	home.setHomeId(12345);
+	 home.setHomeName("ÎÒµÄ¼Ò");
+	 shHomeService.insert(home);
 	 return "login";
    }
    
