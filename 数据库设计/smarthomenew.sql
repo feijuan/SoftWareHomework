@@ -51,7 +51,7 @@ DROP TABLE IF EXISTS `home`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `home` (
-  `home_id` int(11) NOT NULL,
+  `home_id` int(20) NOT NULL,
   `home_name` varchar(20) DEFAULT NULL,
   PRIMARY KEY (`home_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -63,6 +63,7 @@ CREATE TABLE `home` (
 
 LOCK TABLES `home` WRITE;
 /*!40000 ALTER TABLE `home` DISABLE KEYS */;
+INSERT INTO `home` VALUES (12345,'我的家');
 /*!40000 ALTER TABLE `home` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -74,11 +75,14 @@ DROP TABLE IF EXISTS `member`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `member` (
-  `idcard` int(11) NOT NULL,
+  `idcard` int(20) NOT NULL,
   `password` varchar(20) NOT NULL,
   `name` varchar(20) DEFAULT NULL,
-  `owner_flag` tinyint(4) NOT NULL,
-  PRIMARY KEY (`idcard`)
+  `owner_flag` int(11) NOT NULL,
+  `home_id` int(20) DEFAULT NULL,
+  PRIMARY KEY (`idcard`),
+  KEY `home_id_idx` (`home_id`),
+  CONSTRAINT `home` FOREIGN KEY (`home_id`) REFERENCES `home` (`home_id`) ON DELETE SET NULL ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -104,7 +108,7 @@ CREATE TABLE `room` (
   `room_type` int(11) NOT NULL,
   PRIMARY KEY (`room_id`),
   KEY `home_id_idx` (`home_id`),
-  CONSTRAINT `home_id` FOREIGN KEY (`home_id`) REFERENCES `home` (`home_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+  CONSTRAINT `home_id` FOREIGN KEY (`home_id`) REFERENCES `home` (`home_id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -130,9 +134,12 @@ CREATE TABLE `sensor` (
   `sensor_type` varchar(20) NOT NULL,
   `buid_time` varchar(20) NOT NULL,
   `remark` varchar(20) NOT NULL,
+  `home_id` int(20) NOT NULL,
   PRIMARY KEY (`sensor_id`),
   KEY `romm_id_idx` (`room_id`),
-  CONSTRAINT `romm_id` FOREIGN KEY (`room_id`) REFERENCES `room` (`room_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+  KEY `home_id_idx` (`home_id`),
+  CONSTRAINT `homm_id` FOREIGN KEY (`home_id`) REFERENCES `home` (`home_id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `romm_id` FOREIGN KEY (`room_id`) REFERENCES `room` (`room_id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -179,4 +186,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-10-30 16:05:15
+-- Dump completed on 2017-11-01 21:22:29
