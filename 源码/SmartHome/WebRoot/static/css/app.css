@@ -1924,7 +1924,7 @@ ul.tpl-dropdown-content li>a.tpl-dropdown-content-message:last-child {
     font-size: 12px;
     line-height: 30px;
     text-indent: 10px;
-    border-radius: 0px 0px 6px 6px;
+    border-radius: 0px 0px 0px 0px;
 }
 
 .login-am-center .am-form .am-form-group:first-child input {
@@ -1939,6 +1939,9 @@ ul.tpl-dropdown-content li>a.tpl-dropdown-content-message:last-child {
     color: #fff;
     font-size: 14px;
     line-height: 30px;
+}
+.login-am-center .am-form .am-form-group1 input {
+    border-radius: 0px 0px 6px 6px;
 }
 
 .tpl-login-max {
