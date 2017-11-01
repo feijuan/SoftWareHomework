@@ -53,7 +53,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                     <div class="am-form-group">
                         <input type="email" class="" id="doc-ipt-email-1" placeholder="输入电子邮件">
                     </div>
-                    <div class="am-form-group">
+                    <div class="am-form-group1">
                         <input type="password" class="" id="doc-ipt-pwd-1" placeholder="设置个密码吧">
                     </div>
                     <p><button type="submit" class="am-btn am-btn-default">登录</button></p>

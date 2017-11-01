@@ -10,22 +10,30 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <base href="<%=basePath%>">
     
     <title>adminLogin</title>
-
-	<meta http-equiv="pragma" content="no-cache">
-	<meta http-equiv="cache-control" content="no-cache">
-	<meta http-equiv="expires" content="0">    
-	<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
-	<meta http-equiv="description" content="This is my page">
 	<link rel="icon" type="image/png" href="static/i/favicon.png">
     <link rel="apple-touch-icon-precomposed" href="static/i/app-icon72x72@2x.png">
-    <meta name="apple-mobile-web-app-title" content="Amaze UI" />
     <link rel="stylesheet" href="static/css/amazeui.min.css" />
     <link rel="stylesheet" href="static/css/admin.css">
     <link rel="stylesheet" href="static/css/app.css">
-	<!--
-	<link rel="stylesheet" type="text/css" href="styles.css">
-	-->
-
+    <%@include file="/jsp/include/head.jsp" %>
+    <script src="http://static.runoob.com/assets/jquery-validation-1.14.0/lib/jquery.js"></script>
+    <script src="http://static.runoob.com/assets/jquery-validation-1.14.0/dist/jquery.validate.min.js"></script>
+    <script src="http://static.runoob.com/assets/jquery-validation-1.14.0/dist/localization/messages_zh.js"></script>
+    <script type="text/javascript">
+    /*  $().ready(function() {
+// 在键盘按下并释放及提交后验证提交表单
+  $("#loginform").validate({
+        rules: {
+          username: "required",
+          password: "required",
+        },
+        messages: {
+          username: "请输入您的名字",
+          password: "请输入您的姓氏",
+        }
+    });
+}); */
+  </script>
   </head>
   
   <body data-type="login">
@@ -43,15 +51,16 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             <i>Log In </i> or <span> Sign Up</span>
         </div>
         <div class="am-u-sm-10 login-am-center">
-            <form class="am-form">
+            <form action="login.action" id="loginform" method="post" class="am-form">
                 <fieldset>
                     <div class="am-form-group">
-                        <input type="password" class="" id="doc-ipt-email-1" placeholder="输入身份证号">
-                    </div>
+                        <input  type="password" class="" name="username" id="username" placeholder="输入身份证号">
+                    </div>                  
                     <div class="am-form-group">
-                        <input type="password" class="" id="doc-ipt-pwd-1" placeholder="设置个密码吧">
+                        <input type="password" class="" name="password" id="password" placeholder="设置个密码吧">
                     </div>
-                    <p><button type="submit" class="am-btn am-btn-default">登录</button></p>
+                    <p><button type="submit"  class="am-btn am-btn-default">登录</button></p>
+                    
                 </fieldset>
             </form>
         </div>
