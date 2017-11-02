@@ -15,4 +15,17 @@ public class ShAdminService
    {
 	   shAdminMapper.insert(record);
    }
+   public void delete(Integer id)
+   {
+	   shAdminMapper.deleteByPrimaryKey(id);
+   }
+   public void update(ShAdmin record)
+   {
+	   shAdminMapper.updateByPrimaryKey(record);
+   }
+   public ShAdmin select(Integer id)
+   {
+	   ShAdmin shAdmin=shAdminMapper.selectByPrimaryKey(id);
+	   return shAdmin;
+   }
 }
