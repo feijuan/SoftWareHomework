@@ -7,9 +7,10 @@
     <result column="sensor_type" property="sensorType" jdbcType="VARCHAR" />
     <result column="buid_time" property="buidTime" jdbcType="VARCHAR" />
     <result column="remark" property="remark" jdbcType="VARCHAR" />
+    <result column="home_id" property="homeId" jdbcType="VARCHAR"/>
   </resultMap>
   <sql id="Base_Column_List" >
-    sensor_id, room_id, sensor_type, buid_time, remark
+    sensor_id, room_id, sensor_type, buid_time, remark,home_id
   </sql>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
@@ -17,6 +18,11 @@
     from sensor
     where room_id = #{roomId,jdbcType=INTEGER}
   </select>
+  <select id="selectByRoomAndHome" resultMap="BaseResultMap" parameterType="java.util.Map">
+  select
+  <include refid="Base_Column_List"/>
+  from sensor
+  where room_id=#{roomId,jdbcType=INTEGER} and home_id=#{homeId,jdbcType=VARCHAR}</select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from sensor
     where room_id = #{roomId,jdbcType=INTEGER}

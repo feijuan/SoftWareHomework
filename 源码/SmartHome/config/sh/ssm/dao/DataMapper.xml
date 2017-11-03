@@ -22,9 +22,9 @@
   delete from data
   where sensor_id=#{sensorId,jdbcType=INTEGER}</delete>
   <insert id="insert" parameterType="sh.ssm.po.Data" >
-    insert into data (data_id, sensor_id, collect_time, 
+    insert into data (sensor_id, collect_time, 
       data, data_type)
-    values (#{dataId,jdbcType=INTEGER}, #{sensorId,jdbcType=INTEGER}, #{collectTime,jdbcType=VARCHAR}, 
+    values (#{sensorId,jdbcType=INTEGER}, #{collectTime,jdbcType=VARCHAR}, 
       #{data,jdbcType=VARCHAR}, #{dataType,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="sh.ssm.po.Data" >

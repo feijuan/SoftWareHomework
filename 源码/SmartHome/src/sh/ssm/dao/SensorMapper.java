@@ -1,5 +1,7 @@
 package sh.ssm.dao;
 
+import java.util.Map;
+
 import sh.ssm.po.Sensor;
 
 public interface SensorMapper {
@@ -10,6 +12,8 @@ public interface SensorMapper {
     int insertSelective(Sensor record);
 
     Sensor[] selectByPrimaryKey(Integer roomId);
+    
+    Sensor[] selectByRoomAndHome(Map map);
 
     int updateByPrimaryKeySelective(Sensor record);
 

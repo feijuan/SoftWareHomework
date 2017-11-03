@@ -22,8 +22,8 @@
 
 <script>
 $.validator.setDefaults({
-    submitHandler: function() {
-      alert("提交事件!");
+    submitHandler: function(form) {
+     form.submit();
     }
 });
 $().ready(function() {
@@ -90,7 +90,7 @@ $().ready(function() {
 		<div id="loginbox">
 				<h4>智能家居系统</h4>
 			<form  method="post" name="loginForm"
-				id="loginForm">
+				id="loginForm" action="userlogin.action">
 				<div class="control-group normal_text">
 					<h3>	</h3>
 				</div>

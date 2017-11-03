@@ -14,7 +14,7 @@ public class ShMemberService {
 	{
 		memberMapper.insert(record);
 	}
-	public void delete(Integer idcard)
+	public void delete(String idcard)
 	{
 		memberMapper.deleteByPrimaryKey(idcard);
 	}
@@ -22,12 +22,12 @@ public class ShMemberService {
 	{
 		memberMapper.updateByPrimaryKey(record);
 	}
-	public Member select(Integer idcard)
+	public Member select(String idcard)
 	{
 		Member member=memberMapper.selectByPrimaryKey(idcard);
 		return member;
 	}
-	public Member[] selectByHomeId(Integer home_id)//用于查看本家庭成员
+	public Member[] selectByHomeId(String home_id)//用于查看本家庭成员
 	{
 		Member[] member=memberMapper.selectByHomeId(home_id);
 		return member;

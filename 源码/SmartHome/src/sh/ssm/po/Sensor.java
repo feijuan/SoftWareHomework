@@ -11,7 +11,7 @@ public class Sensor {
 
     private String remark;
     
-    private Integer homeId;
+    private String homeId;
 
     public Integer getSensorId() {
         return sensorId;
@@ -54,12 +54,12 @@ public class Sensor {
         this.remark = remark == null ? null : remark.trim();
     }
     
-    public Integer getHomeId()
+    public String getHomeId()
     {
     	return homeId;
     }
     
-    public void setHomeId(Integer homeId)
+    public void setHomeId(String homeId)
     {
     	this.homeId=homeId;
     }

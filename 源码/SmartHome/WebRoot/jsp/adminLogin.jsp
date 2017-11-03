@@ -8,10 +8,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <html>
 <head>
 <meta charset="utf-8">
-<title>菜鸟教程(runoob.com)</title>
+<title>(we love smart home.com)</title>
+
 <script src="../static/js/jquery.min.js"></script>
 <script src="../static/js/jquery.validate.min.js"></script>
-
   
    <link rel="icon" type="image/png" href="../static/i/favicon.png">
     <link rel="apple-touch-icon-precomposed" href="../static/i/app-icon72x72@2x.png">
@@ -20,13 +20,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <link rel="stylesheet" href="../static/css/app.css">
 <script>
 $.validator.setDefaults({
-    submitHandler: function() {
-      alert("提交事件!");
+    submitHandler: function(form) {
+      form.submit();
     }
 });
 $().ready(function() {
 // 在键盘按下并释放及提交后验证提交表单
-  $("#signupForm").validate({
+  $("#adminLoginForm").validate({
         rules: {
           username: {
             required: true,
@@ -53,7 +53,7 @@ $().ready(function() {
 <style>
 .error{
     position:absolute; 
-    color:red;
+    color:pink;
     height:10px;
     width:100px;
     right:-100px;
@@ -78,21 +78,21 @@ $().ready(function() {
    <div class="am-u-sm-10 login-am-center">
     <div class="myapp-login-logo-text">
             <div class="myapp-login-logo-text">
-                Amaze UI<span> Login</span> <i class="am-icon-skyatlas"></i>
+                智能家居系统   <span> smart home</span> <i class="am-icon-skyatlas"></i>
                 
             </div>
         </div>
 
         <div class="login-font">
-            <i>Log In </i> or <span> Sign Up</span>
+            <i> 管理员登录</i>  
         </div>
-    <form id="signupForm" method="get" class="am-form">
+    <form id="adminLoginForm" action="adminlogin.action" method="post" class="am-form">
                 <fieldset>
                     <div class="am-form-group" >
-                        <input type="text" class="form-input" name="username" id="doc-ipt-email-1" placeholder="输入身份证号">
+                        <input type="text" class="form-input" name="username" id="doc-ipt-email-1" placeholder="主人，输个身份证号嘛~">
                     </div>                  
                     <div class="am-form-group">
-                        <input type="password" class="form-input" name="password" id="doc-ipt-pwd-1" placeholder="设置个密码吧">
+                        <input type="password" class="form-input" name="password" id="doc-ipt-pwd-1" placeholder="还有密码咩(ง •_•)ง">
                     </div>
                     <p><button type="submit" class="am-btn am-btn-default">登录</button></p>
                 </fieldset>
@@ -100,6 +100,7 @@ $().ready(function() {
           </div>  
 </div>
 </div>
+
   <script src="../static/js/amazeui.min.js"></script>
   <script src="../static/js/app.js"></script>
 </body>

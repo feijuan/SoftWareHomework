@@ -73,12 +73,11 @@ public class SocketOperate extends Thread{
               	int len;
                 String data=null;
              while((len=bi.read(buffer))!=-1) {
-                 data=new String(buffer, 0, len);          
+                 data=new String(buffer, 0, len); 
                // sendGet("http://localhost:8088/SmartHome/fule.action", "data=" + data);  
-                String url = "http://localhost:8088/SmartHome/fule.action";
+                String url = "http://localhost:8080/SmartHome/tcpdata.action";
                 Map<String,String> map = new HashMap<String,String>();
-                map.put("param1", "你好世界");
-                map.put("param2", "哈哈");
+                map.put("data", data);     
                 String result = HttpUtil.sendPost(url, map);
              }
             }catch(IOException ex){     

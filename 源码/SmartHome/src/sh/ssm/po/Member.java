@@ -1,7 +1,7 @@
 package sh.ssm.po;
 
 public class Member {
-    private Integer idcard;
+    private String idcard;
 
     private String password;
 
@@ -9,13 +9,15 @@ public class Member {
 
     private Integer ownerFlag;
 
-    private Integer homeId;
+    private String homeId;
+    
+    private Integer telphone;
 
-    public Integer getIdcard() {
+    public String getIdcard() {
         return idcard;
     }
 
-    public void setIdcard(Integer idcard) {
+    public void setIdcard(String idcard) {
         this.idcard = idcard;
     }
 
@@ -43,11 +45,29 @@ public class Member {
         this.ownerFlag = ownerFlag;
     }
 
-    public Integer getHomeId() {
+    public String getHomeId() {
         return homeId;
     }
 
-    public void setHomeId(Integer homeId) {
+    public void setHomeId(String homeId) {
         this.homeId = homeId;
     }
+    
+    public void setTelphone(Integer telphone)
+    {
+    	this.telphone=telphone;
+    }
+    
+    public Integer getTelphone()
+    {
+    	return telphone;
+    }
+
+	@Override
+	public String toString() {
+		return "Member [idcard=" + idcard + ", password=" + password
+				+ ", name=" + name + ", ownerFlag=" + ownerFlag + ", homeId="
+				+ homeId + ", telphone=" + telphone + "]";
+	}
+    
 }
