@@ -11,7 +11,7 @@ public class Member {
 
     private String homeId;
     
-    private Integer telphone;
+    private String telphone;
 
     public String getIdcard() {
         return idcard;
@@ -53,12 +53,12 @@ public class Member {
         this.homeId = homeId;
     }
     
-    public void setTelphone(Integer telphone)
+    public void setTelphone(String telphone)
     {
     	this.telphone=telphone;
     }
     
-    public Integer getTelphone()
+    public String getTelphone()
     {
     	return telphone;
     }

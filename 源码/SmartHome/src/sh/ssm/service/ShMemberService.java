@@ -27,7 +27,12 @@ public class ShMemberService {
 		Member member=memberMapper.selectByPrimaryKey(idcard);
 		return member;
 	}
-	public Member[] selectByHomeId(String home_id)//用于查看本家庭成员
+	public Member selectByPhone(String telphone)
+	{
+		Member member=memberMapper.selectByPhone(telphone);
+		return member;
+	}
+	public Member[] selectByHomeId(String home_id)
 	{
 		Member[] member=memberMapper.selectByHomeId(home_id);
 		return member;

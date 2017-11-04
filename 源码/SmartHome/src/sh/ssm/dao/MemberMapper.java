@@ -8,8 +8,10 @@ public interface MemberMapper {
     int insert(Member record);
 
     int insertSelective(Member record);
-
+  
     Member selectByPrimaryKey(String idcard);
+    
+    Member selectByPhone(String telphone);
     
     Member[] selectByHomeId(String home_id);
     
