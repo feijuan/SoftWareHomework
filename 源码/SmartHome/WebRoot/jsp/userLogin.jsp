@@ -9,7 +9,7 @@
 <html lang="en">
 
 <head>
-<title >登录界面</title>
+<title >SmartHome登陆</title>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <script src="../static/js/jquery-1.7.2.js"></script> 
@@ -22,17 +22,20 @@
 
 <script>
 $.validator.setDefaults({
-    submitHandler: function(form) {
-     form.submit();
+    submitHandler: function() {
+    	 $("#userLoginForm").submit();
     }
 });
 $().ready(function() {
 // 在键盘按下并释放及提交后验证提交表单
-  $("#loginForm").validate({
+  $("#userloginForm").validate({
         rules: {
-        	loginname: {
+        	id_card: {
             required: true,
-            minlength: 2
+            digits:true,
+            minlength: 6,
+            maxlength:6
+            
           },
           password: {
             required: true,
@@ -40,13 +43,15 @@ $().ready(function() {
           }
         },
         messages: {  
-        	loginname: {
-            required: "请输入用户名",
-            minlength: "用户名必需由两个字母组成"
+        	id_card: {
+            required: "请输入身份证号后6位",
+            digits:"输入须为数字",
+            minlength: "6位",
+            maxlength:"6位"
           },
           password: {
             required: "请输入密码",
-            minlength: "密码长度不能小于 5 个字母"
+            minlength: "密码长度不能小于 5位"
           } 
         }
     });
@@ -61,7 +66,7 @@ $().ready(function() {
     }
     .error{
     position:absolute; 
-    color:red;
+    color:black;
     height:30px;
     width:100px;
     right:35px;
@@ -88,9 +93,9 @@ $().ready(function() {
 	<div
 		style="width:100%;text-align: center;margin: 0 auto;position: absolute;">
 		<div id="loginbox">
-				<h4>智能家居系统</h4>
-			<form  method="post" name="loginForm"
-				id="loginForm" action="userlogin.action">
+				<h4>欢迎来到SmartHome</h4>
+			<form  method="post" name="userloginForm"
+				id="userloginForm">
 				<div class="control-group normal_text">
 					<h3>	</h3>
 				</div>
@@ -99,7 +104,7 @@ $().ready(function() {
 						<div class="main_input_box">
 							<span id="add-span"class="add-on bg_lg">
 							<i><img height="30" src="../static/login/user.png" /></i>
-							</span><input type="text" name="loginname" id="loginname" class="form-input" value="" placeholder="请输入用户名" />
+							</span><input type="text" name="id_card" id="id_card" class="form-input" value="" placeholder="请身份证号" />
 						</div>
 					</div>
 				</div>
