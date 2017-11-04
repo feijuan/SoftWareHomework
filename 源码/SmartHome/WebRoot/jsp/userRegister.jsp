@@ -29,8 +29,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   </head>
 <script>
 $.validator.setDefaults({
-    submitHandler: function() {
-      $("#userRegisterForm").submit();
+    submitHandler: function(form) {
+      $(form).submit();
     }
 });
 $().ready(function() {
@@ -161,7 +161,7 @@ $().ready(function() {
             <i>用户 </i> <span> 注册</span>
         </div>
         <div class="am-u-sm-10 login-am-center">
-             <form id="userRegisterForm" action="userregister.action" method="post" class="am-form">
+             <form id="userRegisterForm" action="jsp/userregister.action" method="post" class="am-form">
                 <fieldset>
                     <div class="am-form-group">
                          <input type="text" class="form-input" name="username" id="doc-ipt-email-1" placeholder="主人，输个名字嘛~">

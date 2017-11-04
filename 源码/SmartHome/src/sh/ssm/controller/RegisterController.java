@@ -18,7 +18,7 @@ import sh.ssm.service.ShMemberService;
 public class RegisterController {
   @Autowired
   private ShMemberService shMemberService;
-  @RequestMapping(value="/user_register",method=RequestMethod.POST)
+  @RequestMapping(value="/userregister",method=RequestMethod.POST)
   public String register(HttpServletRequest request)throws Exception
   {
 	  String id_card=request.getParameter("id_card");
@@ -29,10 +29,10 @@ public class RegisterController {
 		  record.setPassword(request.getParameter("password"));
 		  record.setName(request.getParameter("username"));
 		  record.setHomeId(request.getParameter("home_id"));
-		  record.setTelphone((request.getParameter("telphone")));
-		  record.setOwnerFlag(Integer.parseInt(request.getParameter("owner_flag")));
+		  record.setTelphone((request.getParameter("telephone")));
+		  record.setOwnerFlag(1);
 		  shMemberService.insert(record);
-		  return "userlogin";
+		  return "userLogin";
 	  }
 	  else
 		  return "userregister";
