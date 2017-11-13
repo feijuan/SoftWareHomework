@@ -290,7 +290,7 @@ ul.tpl-dropdown-content li>a.tpl-dropdown-content-message:last-child {
 .tpl-logo {
     display: inline-block;
     vertical-align: middle;
-    margin-top: -5px;
+    margin-top: 15%;
     padding-left: 18px;
     width: 160px;
 }

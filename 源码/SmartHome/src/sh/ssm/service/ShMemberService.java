@@ -27,14 +27,24 @@ public class ShMemberService {
 		Member member=memberMapper.selectByPrimaryKey(idcard);
 		return member;
 	}
-	public Member selectByPhone(String telphone)
-	{
-		Member member=memberMapper.selectByPhone(telphone);
-		return member;
-	}
-	public Member[] selectByHomeId(String home_id)
+	public Member[] selectByHomeId(String home_id)//���ڲ鿴����ͥ��Ա
 	{
 		Member[] member=memberMapper.selectByHomeId(home_id);
 		return member;
 	}
+	public Member selectOwnerByHomeId(String home_id)
+	{
+		Member member=memberMapper.selectOwnerByHomeId(home_id);
+		return member;
+	}
+	 public Member[] selectUncheckedMembers(String home_id)
+	  {
+		 Member[] members=memberMapper.selectUncheckedMembers(home_id);
+		 return members;
+	  }
+	 public Member selectByPhone(String telephone)
+	 {
+		 Member member=memberMapper.selectByPhone(telephone);
+		 return member;
+	 }
 }

@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="sh.ssm.dao.DeviceStatusMapper">
+  <resultMap id="BaseResultMap" type="sh.ssm.po.DeviceStatus">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="home_id" jdbcType="VARCHAR" property="homeId" />
+    <result column="home_area" jdbcType="INTEGER" property="homeArea" />
+    <result column="device_name" jdbcType="VARCHAR" property="deviceName" />
+    <result column="device_statue" jdbcType="VARCHAR" property="deviceStatue" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, home_id, home_area, device_name, device_statue
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from device_status
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <select id="selectByidcard" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from device_status
+    where home_id= #{id_card,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from device_status
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="sh.ssm.po.DeviceStatus">
+    insert into device_status (id, home_id, home_area, 
+      device_name, device_statue)
+    values (#{id,jdbcType=INTEGER}, #{homeId,jdbcType=VARCHAR}, #{homeArea,jdbcType=INTEGER}, 
+      #{deviceName,jdbcType=VARCHAR}, #{deviceStatue,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="sh.ssm.po.DeviceStatus">
+    insert into device_status
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="homeId != null">
+        home_id,
+      </if>
+      <if test="homeArea != null">
+        home_area,
+      </if>
+      <if test="deviceName != null">
+        device_name,
+      </if>
+      <if test="deviceStatue != null">
+        device_statue,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="homeId != null">
+        #{homeId,jdbcType=VARCHAR},
+      </if>
+      <if test="homeArea != null">
+        #{homeArea,jdbcType=INTEGER},
+      </if>
+      <if test="deviceName != null">
+        #{deviceName,jdbcType=VARCHAR},
+      </if>
+      <if test="deviceStatue != null">
+        #{deviceStatue,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="sh.ssm.po.DeviceStatus">
+    update device_status
+    <set>
+      <if test="homeId != null">
+        home_id = #{homeId,jdbcType=VARCHAR},
+      </if>
+      <if test="homeArea != null">
+        home_area = #{homeArea,jdbcType=INTEGER},
+      </if>
+      <if test="deviceName != null">
+        device_name = #{deviceName,jdbcType=VARCHAR},
+      </if>
+      <if test="deviceStatue != null">
+        device_statue = #{deviceStatue,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="sh.ssm.po.DeviceStatus">
+    update device_status
+    set home_id = #{homeId,jdbcType=VARCHAR},
+      home_area = #{homeArea,jdbcType=INTEGER},
+      device_name = #{deviceName,jdbcType=VARCHAR},
+      device_statue = #{deviceStatue,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  </mapper>
+  

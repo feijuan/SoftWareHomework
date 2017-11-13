@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="sh.ssm.dao.SensorStatusMapper" >
+  <resultMap id="BaseResultMap" type="sh.ssm.po.SensorStatus" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="home_id" property="homeId" jdbcType="VARCHAR" />
+    <result column="home_area" property="homeArea" jdbcType="INTEGER" />
+    <result column="sensor_type" property="sensorType" jdbcType="INTEGER" />
+    <result column="status" property="status" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, home_id, home_area, sensor_type, status
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from sensor_status
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+   <select id="selectByidcard" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from sensor_status
+    where home_id = #{id_card,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from sensor_status
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="sh.ssm.po.SensorStatus" >
+    insert into sensor_status (id, home_id, home_area, 
+      sensor_type, status)
+    values (#{id,jdbcType=INTEGER}, #{homeId,jdbcType=VARCHAR}, #{homeArea,jdbcType=INTEGER}, 
+      #{sensorType,jdbcType=INTEGER}, #{status,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="sh.ssm.po.SensorStatus" >
+    insert into sensor_status
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="homeId != null" >
+        home_id,
+      </if>
+      <if test="homeArea != null" >
+        home_area,
+      </if>
+      <if test="sensorType != null" >
+        sensor_type,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="homeId != null" >
+        #{homeId,jdbcType=VARCHAR},
+      </if>
+      <if test="homeArea != null" >
+        #{homeArea,jdbcType=INTEGER},
+      </if>
+      <if test="sensorType != null" >
+        #{sensorType,jdbcType=INTEGER},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="sh.ssm.po.SensorStatus" >
+    update sensor_status
+    <set >
+      <if test="homeId != null" >
+        home_id = #{homeId,jdbcType=VARCHAR},
+      </if>
+      <if test="homeArea != null" >
+        home_area = #{homeArea,jdbcType=INTEGER},
+      </if>
+      <if test="sensorType != null" >
+        sensor_type = #{sensorType,jdbcType=INTEGER},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="sh.ssm.po.SensorStatus" >
+    update sensor_status
+    set home_id = #{homeId,jdbcType=VARCHAR},
+      home_area = #{homeArea,jdbcType=INTEGER},
+      sensor_type = #{sensorType,jdbcType=INTEGER},
+      status = #{status,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

@@ -1,5 +1,9 @@
 package sh.ssm.service;
 
+import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -17,14 +21,21 @@ public void deleteByDataId(Integer data_id)
 {
 	dataMapper.deleteByPrimaryKey(data_id);
 }
-public void deleteBySensorId(Integer sensor_id)//µ±É¾µôÕâ¸ö´«¸ÐÆ÷Ê±ºòÊý¾ÝÒ»²¢ÏûÊ§
+public void deleteBySensorId(Integer sensor_id)//ï¿½ï¿½É¾ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê±ï¿½ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½Ê§
 {
 	dataMapper.deleteBySensorID(sensor_id);}
-public Data[] select(Integer sensor_id,String type)//¸ù¾Ý´«¸ÐÆ÷idºÍÊý¾ÝÀàÐÍ²éÕÒÏà¹ØÊý¾Ý²¢ÒÔdata¼¯ºÏÐÎÊ½·µ»Ø
+public Data[] select(Integer sensor_id,String type,String startTime,String endTime)//ï¿½ï¿½Ý´ï¿½ï¿½ï¿½ï¿½ï¿½idï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í²ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ý²ï¿½ï¿½ï¿½dataï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê½ï¿½ï¿½ï¿½ï¿½
 {
-	Data[] data=dataMapper.selectByPrimaryKey(sensor_id,type);
+	Map<String,Object> map=new HashMap<String, Object>();
+	map.put("sensorId", sensor_id);
+	map.put("type", type);
+	map.put("startTime", startTime);
+	map.put("endTime", endTime);
+	System.out.println(startTime);
+	System.out.println(endTime);
+	Data[] data=dataMapper.selectByPrimaryKey(map);
 	return data;}
-public void update(Data record)//¸üÐÂÊý¾Ý°´ÕÕ¸ø¶¨ÊµÌåÖÐµÄ´«¸ÐÆ÷id
+public void update(Data record)//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ý°ï¿½ï¿½Õ¸ï¿½Êµï¿½ï¿½ï¿½ÐµÄ´ï¿½ï¿½ï¿½ï¿½ï¿½id
 {
 	dataMapper.updateByPrimaryKey(record);}
 }

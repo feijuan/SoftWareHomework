@@ -14,29 +14,30 @@ import sh.ssm.po.Member;
 import sh.ssm.service.ShMemberService;
 
 @Controller
-@RequestMapping("/jsp")
+
 public class RegisterController {
-  @Autowired
-  private ShMemberService shMemberService;
-  @RequestMapping(value="/userregister",method=RequestMethod.POST)
-  public String register(HttpServletRequest request)throws Exception
-  {
-	  String id_card=request.getParameter("id_card");
-	  Member temp_member=shMemberService.select(id_card);
-	  if(temp_member==null)
-	  {   Member record=new Member();
-		  record.setIdcard(id_card);
-		  record.setPassword(request.getParameter("password"));
-		  record.setName(request.getParameter("username"));
-		  record.setHomeId(request.getParameter("home_id"));
-		  record.setTelphone((request.getParameter("telephone")));
-		  record.setOwnerFlag(1);
-		  shMemberService.insert(record);
-		  return "userLogin";
+	@Autowired
+	  private ShMemberService shMemberService;
+	  @RequestMapping(value="/user_register",method=RequestMethod.POST)
+	  public String register(HttpServletRequest request)throws Exception
+	  {
+		  String id_card=request.getParameter("id_card");//通过id_card属性获得用户输入的身份证号
+		  System.out.println(id_card);
+		  Member temp_member=shMemberService.select(id_card);
+		  if(temp_member==null)//如果用户名不存在则可以注册
+		  {   Member record=new Member();
+			  record.setIdcard(id_card);
+			  record.setPassword(request.getParameter("password"));
+			  record.setName(request.getParameter("username"));
+			  record.setHomeId(request.getParameter("home_id"));
+			  record.setTelphone(request.getParameter("telephone"));
+			  record.setOwnerFlag(1);
+			  shMemberService.insert(record);
+			  return "jsp/userLogin";//注册成功返回到登陆页面
+		  }
+		  else
+			  return "jsp/userRegister";//不成功则返回注册页面
 	  }
-	  else
-		  return "userregister";
-  }
    @RequestMapping(value="/CheckId",method=RequestMethod.POST)
    public void CheckId(HttpServletRequest request,HttpServletResponse response) throws IOException 
    {
@@ -52,7 +53,8 @@ public class RegisterController {
    public void CheckPhone(HttpServletRequest request,HttpServletResponse response) throws IOException 
    {
 	   System.out.println("手机号验证");
-	   Member member=shMemberService.selectByPhone(request.getParameter("telphone"));
+	   System.out.println();
+	   Member member=shMemberService.selectByPhone(request.getParameter("telephone"));
 	   if(member==null)
 	   {
 		  response.getWriter().print(true);

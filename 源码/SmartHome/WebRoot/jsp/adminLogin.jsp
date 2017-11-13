@@ -9,15 +9,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <head>
 <meta charset="utf-8">
 <title>(we love smart home.com)</title>
-
-<script src="../static/js/jquery.min.js"></script>
-<script src="../static/js/jquery.validate.min.js"></script>
-  
-   <link rel="icon" type="image/png" href="../static/i/favicon.png">
-    <link rel="apple-touch-icon-precomposed" href="../static/i/app-icon72x72@2x.png">
-    <link rel="stylesheet" href="../static/css/amazeui.min.css" />
-    <link rel="stylesheet" href="../static/css/admin.css">
-    <link rel="stylesheet" href="../static/css/app.css">
+<%@include file="head.jsp" %>
 <script>
 $.validator.setDefaults({
     submitHandler: function(form) {
@@ -101,7 +93,7 @@ $().ready(function() {
 </div>
 </div>
 
-  <script src="../static/js/amazeui.min.js"></script>
-  <script src="../static/js/app.js"></script>
+  <script src="static/js/amazeui.min.js"></script>
+  <script src="static/js/app.js"></script>
 </body>
 </html>

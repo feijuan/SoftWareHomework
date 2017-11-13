@@ -7,12 +7,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import sh.ssm.dao.SensorMapper;
+import sh.ssm.dao.SensorStatusMapper;
 import sh.ssm.po.Sensor;
 
 @Service
 public class ShSensorService {
 @Autowired
 private SensorMapper sensorMapper;
+
 public void insert(Sensor record)
 {
 	sensorMapper.insert(record);}

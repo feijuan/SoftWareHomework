@@ -20,27 +20,23 @@ public class LoginController {
 private ShMemberService shMemberService;
 @Autowired
 private ShAdminService shAdminService;
-@RequestMapping(value="/login",method=RequestMethod.GET)
-public String login(HttpServletRequest request) throws Exception
-{
-	return "adminLogin";
-}
+
 @RequestMapping(value="/adminlogin",method=RequestMethod.POST)
 public String loginCheck(HttpServletRequest request) throws Exception
 {
-	String id_card=request.getParameter("username");
-	String password=request.getParameter("password");
+	String id_card=request.getParameter("username");//从前台通过username来获取填写的管理员账号
+	String password=request.getParameter("password");//从前台通过password来获取填写的密码
 	ShAdmin shAdmin=null;
 		shAdmin=shAdminService.select(Integer.parseInt(id_card));
-	if(shAdmin==null)
-		return "adminlogin";
+	if(shAdmin==null)//看用户输入的用户名是否为空
+		return "adminlogin";//如果为空返回登陆页面
 	else{
-		String data_password=shAdmin.getPassword();
+		String data_password=shAdmin.getPassword();//如果不为空检查密码是否与数据库该用户的一致
 		if(data_password.equals(password))
 		{
-			return "userLogin";
+			return "adminindex";//如果正确跳转到管理员界面
 		}
 	}
-	return "adminLogin";
+	return "adminLogin";//不然回到登陆页面
 }
 }

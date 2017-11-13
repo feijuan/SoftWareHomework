@@ -14,7 +14,7 @@ public class SocketThread extends Thread{
     public SocketThread(){  
         try {  
             if(serverSocket==null){  
-                this.serverSocket = new ServerSocket(9999);
+                this.serverSocket = new ServerSocket(8888);
                 System.out.println("socket start");  
             }  
         } catch (Exception e) {  

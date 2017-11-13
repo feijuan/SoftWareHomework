@@ -14,25 +14,17 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <meta http-equiv="expires" content="0">    
     <meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
     <meta http-equiv="description" content="This is my page">
-     <script src="static/js/jquery.min.js"></script>
-     <script src="static/js/jquery.validate.min.js"></script>
     <link rel="icon" type="image/png" href="static/i/favicon.png">
     <link rel="apple-touch-icon-precomposed" href="static/i/app-icon72x72@2x.png">
     <meta name="apple-mobile-web-app-title" content="Amaze UI" />
     <link rel="stylesheet" href="static/css/amazeui.min.css" />
     <link rel="stylesheet" href="static/css/admin.css">
     <link rel="stylesheet" href="static/css/app.css">
-    <!--
-    <link rel="stylesheet" type="text/css" href="styles.css">
-    -->
-
-  </head>
+    <script src="static/js/jquery.min.js"></script>
+    <script src="static/js/jquery.validate.min.js"></script>
+   </head>
 <script>
-$.validator.setDefaults({
-    submitHandler: function(form) {
-      $(form).submit();
-    }
-});
+
 $().ready(function() {
 // 在键盘按下并释放及提交后验证提交表单
   $("#userRegisterForm").validate({
@@ -48,14 +40,14 @@ $().ready(function() {
          },
          againpassword:{
             required: true,
-            equalTo:"#doc-ipt-pwd-1"
+           // equalTo:"#doc-ipt-pwd-1"
           },
           id_card: {
             required: true,
             number:true,
             remote:{
              type:"POST",
-             url:"jsp/CheckId.action",
+             url:"CheckId.action",
              data:{
              idcard:function(){return $("#doc-ipt-id-1").val();}
              }
@@ -69,7 +61,7 @@ $().ready(function() {
             number:true,
             remote:{
              type:"POST",
-             url:"jsp/CheckPhone.action",
+             url:"CheckPhone.action",
              data:{
              telphone:function(){return $("#doc-ipt-tel-1").val();}
              }
@@ -82,7 +74,7 @@ $().ready(function() {
             number:true,
             remote:{
              type:"POST",
-             url:"jsp/CheckHomeId.action",
+             url:"CheckHomeId.action",
              data:{
              homeid:function(){return $("#doc-ipt-home-1").val();}
              }
@@ -100,7 +92,7 @@ $().ready(function() {
           },
           againpassword:{
             required:"请确认密码",
-            equalTo: "请再次输入相同的密码"
+          //  equalTo: "请再次输入相同的密码"
           },
           id_card: {
             required: "请输入身份证号",
@@ -161,7 +153,7 @@ $().ready(function() {
             <i>用户 </i> <span> 注册</span>
         </div>
         <div class="am-u-sm-10 login-am-center">
-             <form id="userRegisterForm" action="jsp/userregister.action" method="post" class="am-form">
+             <form id="userRegisterForm" action="user_register.action" method="post" class="am-form">
                 <fieldset>
                     <div class="am-form-group">
                          <input type="text" class="form-input" name="username" id="doc-ipt-email-1" placeholder="主人，输个名字嘛~">
@@ -188,7 +180,7 @@ $().ready(function() {
     </div>
 </div>
 
- 
+
   <script src="static/js/amazeui.min.js"></script>
   <script src="static/js/app.js"></script>
 </body>

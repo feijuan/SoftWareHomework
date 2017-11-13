@@ -1,5 +1,8 @@
 package sh.ssm.dao;
 
+import java.sql.Date;
+import java.util.Map;
+
 import sh.ssm.po.Data;
 
 public interface DataMapper {
@@ -11,7 +14,7 @@ public interface DataMapper {
 
     int insertSelective(Data record);
 
-    Data[] selectByPrimaryKey(Integer sensorId,String type);
+    Data[] selectByPrimaryKey(Map map);
 
     int updateByPrimaryKeySelective(Data record);
 

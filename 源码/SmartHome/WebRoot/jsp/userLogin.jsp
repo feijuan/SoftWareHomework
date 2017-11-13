@@ -12,18 +12,18 @@
 <title >SmartHome登陆</title>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<script src="../static/js/jquery-1.7.2.js"></script> 
-<script src="../static/js/jquery.validate.min.js"></script>
-<link rel="stylesheet" href="../static/login/bootstrap.min.css" />
-<link rel="stylesheet" href="../static/login/css/camera.css" />
-<link rel="stylesheet" href="../static/login/bootstrap-responsive.min.css" />
-<link rel="stylesheet" href="../static/login/matrix-login.css" /> 
-<link rel="stylesheet" href="../static/login/font-awesome.css" />
+<script src="static/js/jquery-1.7.2.js"></script> 
+<script src="static/js/jquery.validate.min.js"></script>
+<link rel="stylesheet" href="static/login/bootstrap.min.css" />
+<link rel="stylesheet" href="static/login/css/camera.css" />
+<link rel="stylesheet" href="static/login/bootstrap-responsive.min.css" />
+<link rel="stylesheet" href="static/login/matrix-login.css" /> 
+<link rel="stylesheet" href="static/login/font-awesome.css" />
 
 <script>
 $.validator.setDefaults({
-    submitHandler: function() {
-    	 $("#userLoginForm").submit();
+    submitHandler: function(form) {
+    	 form.submit();
     }
 });
 $().ready(function() {
@@ -33,8 +33,8 @@ $().ready(function() {
         	id_card: {
             required: true,
             digits:true,
-            minlength: 6,
-            maxlength:6
+            minlength: 18,
+            maxlength:18
             
           },
           password: {
@@ -94,7 +94,7 @@ $().ready(function() {
 		style="width:100%;text-align: center;margin: 0 auto;position: absolute;">
 		<div id="loginbox">
 				<h4>欢迎来到SmartHome</h4>
-			<form  method="post" name="userloginForm"
+			<form  method="post" name="userloginForm" action="userlogin.action"
 				id="userloginForm">
 				<div class="control-group normal_text">
 					<h3>	</h3>
@@ -103,7 +103,7 @@ $().ready(function() {
 					<div class="controls">
 						<div class="main_input_box">
 							<span id="add-span"class="add-on bg_lg">
-							<i><img height="30" src="../static/login/user.png" /></i>
+							<i><img height="30" src="static/login/user.png" /></i>
 							</span><input type="text" name="id_card" id="id_card" class="form-input" value="" placeholder="请身份证号" />
 						</div>
 					</div>
@@ -112,7 +112,7 @@ $().ready(function() {
 					<div class="controls">
 						<div class="main_input_box">
 							<span id="add-span" class="add-on bg_ly">
-							<i><img height="30" src="../static/login/suo.png" /></i>
+							<i><img height="30" src="static/login/suo.png" /></i>
 							</span><input type="password" name="password" id="password" class="form-input" placeholder="请输入密码" value="" />
 						</div>
 					</div>
@@ -132,9 +132,9 @@ $().ready(function() {
 	</div>
 	<div id="templatemo_banner_slide" class="container_wapper">
 		<div class="camera_wrap camera_emboss" id="camera_slide">
-			<div data-src="../static/login/images/banner_slide_01.jpg"></div>
-			<div data-src="../static/login/images/banner_slide_02.jpg"></div>
-			<div data-src="../static/login/images/banner_slide_03.jpg"></div>
+			<div data-src="static/login/images/banner_slide_01.jpg"></div>
+			<div data-src="static/login/images/banner_slide_02.jpg"></div>
+			<div data-src="static/login/images/banner_slide_03.jpg"></div>
 		</div>
 	</div>
 	<!-- <script type="text/javascript">
@@ -165,11 +165,10 @@ $().ready(function() {
 </script> -->
 	
 	
-	<script src="../static/js/bootstrap.min.js"></script>
-	
-	<script src="../static/login/js/jquery.easing.1.3.js"></script>
-	<script src="../static/login/js/camera.min.js"></script>
-	<script src="../static/login/js/templatemo_script.js"></script>
+	<script src="static/js/bootstrap.min.js"></script>	
+	<script src="static/login/js/jquery.easing.1.3.js"></script>
+	<script src="static/login/js/camera.min.js"></script>
+	<script src="static/login/js/templatemo_script.js"></script>
 </body>
 
 </html>

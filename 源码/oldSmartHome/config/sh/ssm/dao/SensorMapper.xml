@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="sh.ssm.dao.SensorMapper" >
+  <resultMap id="BaseResultMap" type="sh.ssm.po.Sensor" >
+    <id column="sensor_id" property="sensorId" jdbcType="INTEGER" />
+    <result column="room_id" property="roomId" jdbcType="INTEGER" />
+    <result column="sensor_type" property="sensorType" jdbcType="VARCHAR" />
+    <result column="buid_time" property="buidTime" jdbcType="VARCHAR" />
+    <result column="remark" property="remark" jdbcType="VARCHAR" />
+    <result column="home_id" property="homeId" jdbcType="VARCHAR"/>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    sensor_id, room_id, sensor_type, buid_time, remark,home_id
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from sensor
+    where room_id = #{roomId,jdbcType=INTEGER}
+  </select>
+  <select id="selectByRoomAndHome" resultMap="BaseResultMap" parameterType="java.util.Map">
+  select
+  <include refid="Base_Column_List"/>
+  from sensor
+  where room_id=#{roomId,jdbcType=INTEGER} and home_id=#{homeId,jdbcType=VARCHAR}</select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from sensor
+    where room_id = #{roomId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="sh.ssm.po.Sensor" >
+    insert into sensor (sensor_id, room_id, sensor_type, 
+      buid_time, remark)
+    values (#{sensorId,jdbcType=INTEGER}, #{roomId,jdbcType=INTEGER}, #{sensorType,jdbcType=VARCHAR}, 
+      #{buidTime,jdbcType=VARCHAR}, #{remark,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="sh.ssm.po.Sensor" >
+    insert into sensor
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="sensorId != null" >
+        sensor_id,
+      </if>
+      <if test="roomId != null" >
+        room_id,
+      </if>
+      <if test="sensorType != null" >
+        sensor_type,
+      </if>
+      <if test="buidTime != null" >
+        buid_time,
+      </if>
+      <if test="remark != null" >
+        remark,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="sensorId != null" >
+        #{sensorId,jdbcType=INTEGER},
+      </if>
+      <if test="roomId != null" >
+        #{roomId,jdbcType=INTEGER},
+      </if>
+      <if test="sensorType != null" >
+        #{sensorType,jdbcType=VARCHAR},
+      </if>
+      <if test="buidTime != null" >
+        #{buidTime,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="sh.ssm.po.Sensor" >
+    update sensor
+    <set >
+      <if test="roomId != null" >
+        room_id = #{roomId,jdbcType=INTEGER},
+      </if>
+      <if test="sensorType != null" >
+        sensor_type = #{sensorType,jdbcType=VARCHAR},
+      </if>
+      <if test="buidTime != null" >
+        buid_time = #{buidTime,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null" >
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where sensor_id = #{sensorId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="sh.ssm.po.Sensor" >
+    update sensor
+    set room_id = #{roomId,jdbcType=INTEGER},
+      sensor_type = #{sensorType,jdbcType=VARCHAR},
+      buid_time = #{buidTime,jdbcType=VARCHAR},
+      remark = #{remark,jdbcType=VARCHAR}
+    where sensor_id = #{sensorId,jdbcType=INTEGER}
+  </update>
+</mapper>
